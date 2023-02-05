@@ -1,18 +1,18 @@
 .form-content {
-    margin-top: 50px;
+    margin-top: 20px;
     min-width: 300px;
     max-width: 800px;
     padding: 20PX;
 }
 
-form {
+.form-content form {
 
     display: flex;
     justify-content: center;
 
 }
 
-input:nth-child(1) {
+.form-container input:nth-child(1) {
     padding: 15px;
     border-radius: 30px;
     border: none;
@@ -23,18 +23,9 @@ input:nth-child(1) {
     outline: none;
 }
 
-/* input:focus-visible {
-    outline: 1px solid white;
-    outline: none;
-    border: none
-} */
 
 
-
-
-
-
-input:nth-child(2) {
+.form-container input:nth-child(2) {
     padding: 15px;
     border: none;
     border-radius: 30px;
