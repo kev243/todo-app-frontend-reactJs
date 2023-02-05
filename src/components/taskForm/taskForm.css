@@ -1,0 +1,47 @@
+.form-content {
+    margin-top: 50px;
+    min-width: 300px;
+    max-width: 800px;
+    padding: 20PX;
+}
+
+form {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+input:nth-child(1) {
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background: rgb(34, 34, 34);
+    width: 300px;
+    box-shadow: none;
+    color: white;
+    outline: none;
+}
+
+/* input:focus-visible {
+    outline: 1px solid white;
+    outline: none;
+    border: none
+} */
+
+
+
+
+
+
+input:nth-child(2) {
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    margin-left: 20px;
+    background: teal;
+    color: white;
+    cursor: pointer;
+
+
+}
