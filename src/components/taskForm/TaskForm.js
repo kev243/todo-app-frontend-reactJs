@@ -1,12 +1,34 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "./taskForm.css";
 
-const taskForm = () => {
+const TaskForm = () => {
+  const [newTask, setNewTask] = useState();
+
+  const addTask = (e) => {
+    e.preventDefault();
+    if (!newTask) {
+      alert("please add a task");
+    }
+    axios
+      .post("http://localhost:5000/api/v1", {
+        name: newTask,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    setNewTask("");
+  };
+
   return (
     <div className="form-container">
       <div className="form-content">
-        <form>
-          <input type="text" placeholder="Add a task here"></input>
+        <form onSubmit={(e) => addTask(e)}>
+          <input
+            type="text"
+            placeholder="What do you want to do?"
+            onChange={(e) => setNewTask(e.target.value)}
+          ></input>
           <input type="submit" value="Add" />
         </form>
       </div>
@@ -14,4 +36,4 @@ const taskForm = () => {
   );
 };
 
-export default taskForm;
+export default TaskForm;

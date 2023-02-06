@@ -39,3 +39,14 @@
     width: 50px;
     cursor: pointer;
 }
+
+.task-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width: 20px;
+    padding-right: 10px;
+
+}
