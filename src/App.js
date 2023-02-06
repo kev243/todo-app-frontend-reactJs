@@ -1,17 +1,18 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import TaskForm from "./components/taskForm/TaskForm";
 import corbeille from "./assets/corbeille.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getTasks } from "./feature/task.slice";
 
 const App = () => {
-  const [task, setTask] = useState([]);
+  const dispatch = useDispatch();
+  const task = useSelector((state) => state.tasks.tasksData);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/v1").then((res) => {
-      setTask(res.data);
-    });
-  }, []);
+    dispatch(getTasks());
+  }, [dispatch]);
 
   const updateTask = (task) => {
     let check = !task.completed;
@@ -39,6 +40,7 @@ const App = () => {
       <div className="list-container">
         {task
           ? task
+              .slice()
               .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
               .map((task) => {
                 return (

@@ -1,23 +1,29 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createTask, getTasks } from "../../feature/task.slice";
 import "./taskForm.css";
 
 const TaskForm = () => {
   const [newTask, setNewTask] = useState();
+  const dispatch = useDispatch();
 
   const addTask = (e) => {
     e.preventDefault();
+
+    const data = {
+      name: newTask,
+      _id: Date.now(),
+    };
+
     if (!newTask) {
       alert("please add a task");
     }
-    axios
-      .post("http://localhost:5000/api/v1", {
-        name: newTask,
-      })
-      .then((res) => {
-        console.log(res);
-      });
-    setNewTask("");
+    axios.post("http://localhost:5000/api/v1", data).then(() => {
+      dispatch(createTask(data));
+      dispatch(getTasks());
+      setNewTask("");
+    });
   };
 
   return (
