@@ -38,32 +38,34 @@ const App = () => {
       <TaskForm />
       <div className="list-container">
         {task
-          ? task.map((task) => {
-              return (
-                <div key={task._id} className="task-list">
-                  <div className="left-side">
-                    <input
-                      type={"checkbox"}
-                      defaultChecked={task.completed}
-                      onClick={() => updateTask(task)}
-                    />
-                    {task.completed ? (
-                      <label>
-                        <del>{task.name}</del>
-                      </label>
-                    ) : (
-                      <label>{task.name}</label>
-                    )}
-                  </div>
+          ? task
+              .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+              .map((task) => {
+                return (
+                  <div key={task._id} className="task-list">
+                    <div className="left-side">
+                      <input
+                        type={"checkbox"}
+                        defaultChecked={task.completed}
+                        onClick={() => updateTask(task)}
+                      />
+                      {task.completed ? (
+                        <label>
+                          <del>{task.name}</del>
+                        </label>
+                      ) : (
+                        <label>{task.name}</label>
+                      )}
+                    </div>
 
-                  <img
-                    src={corbeille}
-                    alt="img-delete"
-                    onClick={() => deleteTask(task)}
-                  />
-                </div>
-              );
-            })
+                    <img
+                      src={corbeille}
+                      alt="img-delete"
+                      onClick={() => deleteTask(task)}
+                    />
+                  </div>
+                );
+              })
           : " no task yet "}
       </div>
     </div>
