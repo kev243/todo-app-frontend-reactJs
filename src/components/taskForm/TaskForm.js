@@ -22,7 +22,6 @@ const TaskForm = () => {
     axios.post("http://localhost:5000/api/v1", data).then(() => {
       dispatch(createTask(data));
       dispatch(getTasks());
-      setNewTask("");
     });
   };
 

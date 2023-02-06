@@ -4,7 +4,7 @@ import "./App.css";
 import TaskForm from "./components/taskForm/TaskForm";
 import corbeille from "./assets/corbeille.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getTasks } from "./feature/task.slice";
+import { editTask, getTasks, deleteTask } from "./feature/task.slice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,19 +16,15 @@ const App = () => {
 
   const updateTask = (task) => {
     let check = !task.completed;
-    axios
-      .put("http://localhost:5000/api/v1/" + task._id, {
-        completed: check,
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    axios.put("http://localhost:5000/api/v1/" + task._id, {
+      completed: check,
+    });
+    dispatch(editTask([check, task._id]));
   };
 
-  const deleteTask = (task) => {
-    axios.delete("http://localhost:5000/api/v1/" + task._id).then((res) => {
-      console.log(res);
-    });
+  const deleteTaskById = (task) => {
+    axios.delete("http://localhost:5000/api/v1/" + task._id);
+    dispatch(deleteTask(task._id));
   };
 
   return (
@@ -63,7 +59,7 @@ const App = () => {
                     <img
                       src={corbeille}
                       alt="img-delete"
-                      onClick={() => deleteTask(task)}
+                      onClick={() => deleteTaskById(task)}
                     />
                   </div>
                 );
