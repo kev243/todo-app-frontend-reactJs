@@ -31,7 +31,7 @@ const TaskForm = () => {
         <form onSubmit={(e) => addTask(e)}>
           <input
             type="text"
-            placeholder="What do you want to do?"
+            placeholder="Whatsgi do you want to do?"
             onChange={(e) => setNewTask(e.target.value)}
           ></input>
           <input type="submit" value="Add" />
