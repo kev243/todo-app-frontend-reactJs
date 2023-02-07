@@ -16,14 +16,14 @@ const App = () => {
 
   const updateTask = (task) => {
     let check = !task.completed;
-    axios.put("http://localhost:5000/api/v1/" + task._id, {
+    axios.put("https://todo-app-api-p6wq.onrender.com/api/v1/" + task._id, {
       completed: check,
     });
     dispatch(editTask([check, task._id]));
   };
 
   const deleteTaskById = (task) => {
-    axios.delete("http://localhost:5000/api/v1/" + task._id);
+    axios.delete("https://todo-app-api-p6wq.onrender.com/api/v1/" + task._id);
     dispatch(deleteTask(task._id));
   };
 

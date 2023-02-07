@@ -19,10 +19,12 @@ const TaskForm = () => {
     if (!newTask) {
       alert("please add a task");
     }
-    axios.post("http://localhost:5000/api/v1", data).then(() => {
-      dispatch(createTask(data));
-      dispatch(getTasks());
-    });
+    axios
+      .post("https://todo-app-api-p6wq.onrender.com/api/v1", data)
+      .then(() => {
+        dispatch(createTask(data));
+        dispatch(getTasks());
+      });
   };
 
   return (

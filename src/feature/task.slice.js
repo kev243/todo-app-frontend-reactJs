@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getTasks = createAsyncThunk("getTasks", async (_, thumkAPI) => {
   axios
-    .get("http://localhost:5000/api/v1")
+    .get("https://todo-app-api-p6wq.onrender.com/api/v1")
     .then((res) => thumkAPI.dispatch(getTasksSuccess(res.data)));
 });
 
