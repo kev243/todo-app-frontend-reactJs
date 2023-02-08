@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createTask, getTasks } from "../../feature/task.slice";
+import { createTask } from "../../store/task/task.slice";
 import "./taskForm.css";
+import { getTasks } from "../../store/task/taskActions";
 
 const TaskForm = () => {
   const [newTask, setNewTask] = useState();

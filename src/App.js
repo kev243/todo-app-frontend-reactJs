@@ -4,7 +4,8 @@ import "./App.css";
 import TaskForm from "./components/taskForm/TaskForm";
 import corbeille from "./assets/corbeille.png";
 import { useDispatch, useSelector } from "react-redux";
-import { editTask, getTasks, deleteTask } from "./feature/task.slice";
+import { editTask, deleteTask } from "./store/task/task.slice";
+import { getTasks } from "./store/task/taskActions";
 
 const App = () => {
   const dispatch = useDispatch();

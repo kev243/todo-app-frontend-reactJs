@@ -1,11 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-export const getTasks = createAsyncThunk("getTasks", async (_, thumkAPI) => {
-  axios
-    .get("https://todo-app-api-p6wq.onrender.com/api/v1")
-    .then((res) => thumkAPI.dispatch(getTasksSuccess(res.data)));
-});
+import { createSlice } from "@reduxjs/toolkit";
 
 export const taskSlice = createSlice({
   name: "tasks",
